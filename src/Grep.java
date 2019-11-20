@@ -5,7 +5,7 @@ public class Grep {
     public static void main(String[] args) {
 
         String search ="abc";
-        String text ="aaaabcbbbbbbbbbabcccccccc";
+        String text ="aaaabcbbbbbbbbbabccccccccabc";
 
 
         List<Integer> ans = grep(search,text);
