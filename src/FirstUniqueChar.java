@@ -3,9 +3,10 @@ import java.util.Map;
 
 public class FirstUniqueChar {
     public static void main(String[] args) {
-
+        System.out.println(firstUniquChar("leetcode"));
+        System.out.println(firstUniquChar("loveleetcode"));
     }
-    public int firstUniquChar(String s) {
+    public static int firstUniquChar(String s) {
 
         Map<Character, Integer> map = new HashMap<>();
 
