@@ -1,4 +1,6 @@
-public class ContigousSubarraySum {
+package Leetcode;
+
+public class TwoSum {
     public static void main(String[] args) {
 
     }
