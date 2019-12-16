@@ -1,4 +1,4 @@
-package Leetcode.Leetcode_108;
+package Leetcode.zap;
 
 
 
@@ -38,5 +38,15 @@ public class SortedArrayToBST {
 
         return node;
 
+    }
+}
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val){
+        this.val = val;
     }
 }

@@ -1,4 +1,4 @@
-package Leetcode;
+package Leetcode.zap;
 
 public class LC253_MeetingRooms2 {
     public static void main(String[] args) {
