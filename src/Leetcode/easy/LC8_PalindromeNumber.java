@@ -1,11 +1,11 @@
-package Leetcode.zap;
+package Leetcode.easy;
 
-public class PalindromeNumber {
+public class LC8_PalindromeNumber {
 
     public static void main(String[] args) {
-        PalindromeNumber pn = new PalindromeNumber();
-        System.out.println(pn.isPalindrome3(121));
-        System.out.println(pn.isPalindrome3(-121));
+        LC8_PalindromeNumber lc8 = new LC8_PalindromeNumber();
+        System.out.println(lc8.isPalindrome2(121));
+        System.out.println(lc8.isPalindrome2(-121));
     }
 
 

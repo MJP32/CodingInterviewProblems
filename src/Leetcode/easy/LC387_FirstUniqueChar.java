@@ -1,12 +1,14 @@
-package Leetcode.zap;
+package Leetcode.easy;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class FirstUniqueChar {
+public class LC387_FirstUniqueChar {
+
     public static void main(String[] args) {
-        System.out.println(firstUniquChar("leetcode"));
-        System.out.println(firstUniquChar("loveleetcode"));
+        LC387_FirstUniqueChar lc387 = new LC387_FirstUniqueChar();
+        System.out.println(lc387.firstUniquChar("leetcode"));
+        System.out.println(lc387.firstUniquChar("loveleetcode"));
     }
     public static int firstUniquChar(String s) {
 
