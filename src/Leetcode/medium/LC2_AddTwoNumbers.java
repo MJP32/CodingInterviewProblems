@@ -1,13 +1,9 @@
-package Leetcode.zap;
+package Leetcode.medium;
 
-public class AddTwoNumbers {
+public class LC2_AddTwoNumbers {
 
 
     public static void main(String[] args) {
-        //ListNode l1 = new ListNode(2).next=  new ListNode(4).next = new ListNode(3);
-
-        //ListNode l2 = new ListNode(5).next= new ListNode(6).next = new ListNode(4);
-
 
         ListNode l1_1 = new ListNode(2);
         ListNode l1_2 = new ListNode(4);
@@ -21,27 +17,15 @@ public class AddTwoNumbers {
         l2_1.next = l2_2;
         l2_2.next = l2_3;
 
-        ListNode result = addTwoNumbers2(l1_1, l2_1);
+        ListNode result = addTwoNumbers(l1_1, l2_1);
 
         while(result != null) {
             System.out.print(result.val + " ");
             result = result.next;
         }
-
-        System.out.println();
-        AddTwoNumbers add = new AddTwoNumbers();
-
-        ListNode ans = add.addTwoNumbers(l1_1,l2_1);
-
-        while(ans != null){
-            System.out.print(ans.val + " ");
-            ans = ans.next;
-        }
-
-
-
     }
-    public static ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode pointer1 = l1;
         ListNode pointer2 = l2;
 
@@ -77,48 +61,6 @@ public class AddTwoNumbers {
         }
 
         return result.next;
-    }
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode newList, result = new ListNode(0);
-
-        int carry = 0;
-        int sum =0;
-        int digit =0;
-        while(l1 != null  || l2 != null || carry != 0){
-            sum =0;
-            sum += carry;
-
-            if(l1 != null){
-                sum += l1.val;
-                l1= l1.next;
-            }
-
-            if(l2 != null){
-                sum += l2.val;
-                l2= l2.next;
-            }
-
-
-            if(sum >= 10){
-
-                digit = sum%10;
-                carry = 1;
-            }else{
-                digit = sum;
-                carry =0;
-
-
-            }
-
-            result.val = digit;
-            result.next = new ListNode(0);
-
-        }
-
-        return result;
-
-
-
     }
 }
 

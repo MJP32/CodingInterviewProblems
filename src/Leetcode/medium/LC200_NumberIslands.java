@@ -1,4 +1,4 @@
-package Leetcode;
+package Leetcode.medium;
 
 public class LC200_NumberIslands {
     public static void main(String[] args) {

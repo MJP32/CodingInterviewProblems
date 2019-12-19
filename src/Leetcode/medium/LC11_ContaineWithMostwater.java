@@ -1,4 +1,4 @@
-package Leetcode.zap;
+package Leetcode.medium;
 
 public class LC11_ContaineWithMostwater {
     public static void main(String[] args) {
