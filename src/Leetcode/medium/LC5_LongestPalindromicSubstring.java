@@ -1,4 +1,4 @@
-package Leetcode;
+package Leetcode.medium;
 
 public class LC5_LongestPalindromicSubstring {
     public static void main(String[] args) {
