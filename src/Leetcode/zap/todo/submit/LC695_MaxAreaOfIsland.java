@@ -1,4 +1,4 @@
-package Leetcode.zap.todo;
+package Leetcode.zap.todo.submit;
 
 public class LC695_MaxAreaOfIsland {
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class LC695_MaxAreaOfIsland {
 
     public int maxAreaOfIsland(char[][] grid) {
 
-        int result = 0;
+        int max = 0;
         if(grid == null || grid.length ==0){
             return 0;
         }
@@ -26,17 +26,17 @@ public class LC695_MaxAreaOfIsland {
             for (int j = 0; j < grid[0].length; j++) {
                 if(grid[i][j] == '1'){
 
-                    result += dfs(grid, i,j, result);
+                    max = Math.max(max, dfs(grid, i,j));
                 }
 
             }
         }
 
 
-        return result;
+        return max;
     }
 
-    private int dfs(char[][] grid, int i, int j, int result) {
+    private int dfs(char[][] grid, int i, int j) {
 
         if(i < 0 || i >= grid.length || j < 0 || j>= grid[i].length || grid[i][j] == '0' ){
             return 0;
@@ -44,13 +44,13 @@ public class LC695_MaxAreaOfIsland {
 
         grid[i][j] = '0';
 
+        int count =1;
+        count+=dfs(grid, i-1, j);
+        count+=dfs(grid, i+1, j);
+        count+=dfs(grid, i, j-1);
+        count+=dfs(grid, i, j+1);
 
-        dfs(grid, i-1, j, result++);
-        dfs(grid, i+1, j, result++);
-        dfs(grid, i, j-1, result++);
-        dfs(grid, i, j+1,  result++);
-
-        return 1;
+        return count;
 
     }
 

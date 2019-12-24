@@ -1,4 +1,4 @@
-package Leetcode.zap.todo;
+package Leetcode.zap.todo.submit;
 
 class ListNode {
      int val;
