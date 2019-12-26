@@ -1,4 +1,4 @@
-package Leetcode.zap.todo;
+package Leetcode.zap.todo.submit;
 
 public class LC86_PartitionList {
     public static void main(String[] args) {

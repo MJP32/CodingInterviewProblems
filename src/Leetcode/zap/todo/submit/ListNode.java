@@ -1,9 +1,11 @@
 package Leetcode.zap.todo.submit;
 
-class ListNode {
-     int val;
-      ListNode next;
-      ListNode(int x) {
+public class ListNode {
+
+      public ListNode next;
+    public int val;
+
+    public ListNode(int x) {
           val = x;
       }
 }

@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.medium;
 
 public class LC63_UniquePaths2 {
     public static void main(String[] args) {

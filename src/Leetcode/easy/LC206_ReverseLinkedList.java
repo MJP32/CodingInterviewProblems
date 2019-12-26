@@ -1,4 +1,6 @@
-package Leetcode.zap.todo;
+package Leetcode.easy;
+
+import Leetcode.easy.ListNode;
 
 import java.util.Stack;
 

@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.medium;
 
 public class LC238_ProductOfArrayExceptSelf {
     public static void main(String[] args) {

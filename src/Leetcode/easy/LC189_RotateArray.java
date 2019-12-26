@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.easy;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ public class LC189_RotateArray {
     }
 
     public void rotate(int[] nums, int k) {
-
+        k %= nums.length;
 
         reverse(nums, 0, nums.length-1);
         reverse(nums, 0, k-1);

@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.medium;
 
 public class LC70_ClimbingStairs {
     public static void main(String[] args) {

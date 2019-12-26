@@ -1,16 +1,16 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.easy;
 
-import Leetcode.zap.todo.submit.ListNode;
+
 
 public class LC21_MergeTwoSortedLists {
     public static void main(String[] args) {
 
     }
-    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    public Leetcode.zap.todo.submit.ListNode mergeTwoLists(Leetcode.zap.todo.submit.ListNode l1, Leetcode.zap.todo.submit.ListNode l2) {
 
 
-        ListNode dummy = new ListNode(-1);
-        ListNode head = dummy;
+        Leetcode.zap.todo.submit.ListNode dummy = new Leetcode.zap.todo.submit.ListNode(-1);
+        Leetcode.zap.todo.submit.ListNode head = dummy;
         while(l1 != null && l2 !=null){
 
             if(l1.val < l2.val){
