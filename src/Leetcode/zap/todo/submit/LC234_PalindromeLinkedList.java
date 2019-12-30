@@ -1,5 +1,7 @@
 package Leetcode.zap.todo.submit;
 
+import Leetcode.common.ListNode;
+
 public class LC234_PalindromeLinkedList {
     public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
@@ -12,30 +14,19 @@ public class LC234_PalindromeLinkedList {
         node3.next = node4;
         node4.next = null;
 
-
         LC234_PalindromeLinkedList lc234 =new LC234_PalindromeLinkedList();
-
         System.out.println(lc234.isPalindrome(node1));
-
     }
+
     public boolean isPalindrome(ListNode head){
 
         ListNode slow =head;
         ListNode fast =head;
 
-
-
         while(fast != null && fast.next != null){
-//           System.out.println(head.val);
-
-
             slow = slow.next;
             fast = fast.next.next;
-
-
-
         }
-
 
         slow = reversed(slow);
         fast = head;
@@ -45,13 +36,9 @@ public class LC234_PalindromeLinkedList {
             if(slow.val != fast.val){
                 return false;
             }
-
-
             slow = slow.next;
             fast = fast.next;
         }
-
-
         return true;
     }
 
@@ -63,12 +50,7 @@ public class LC234_PalindromeLinkedList {
             head.next =prev;
             prev =head;
             head = nextNode;
-
-
-
         }
-
-
         return prev;
     }
 }
