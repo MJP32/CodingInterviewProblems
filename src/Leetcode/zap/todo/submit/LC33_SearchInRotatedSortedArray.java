@@ -1,8 +1,8 @@
-package Leetcode.zap.todo.review;
+package Leetcode.zap.todo.submit;
 
-public class LC33_SearchInRoatatedSortedArray {
+public class LC33_SearchInRotatedSortedArray {
     public static void main(String[] args) {
-        LC33_SearchInRoatatedSortedArray lc33 =new LC33_SearchInRoatatedSortedArray();
+        LC33_SearchInRotatedSortedArray lc33 =new LC33_SearchInRotatedSortedArray();
         System.out.println(lc33.search(new int[]{4,5,6,7,0,1,2}, 1));
     }
     public int search(int[] nums, int target) {

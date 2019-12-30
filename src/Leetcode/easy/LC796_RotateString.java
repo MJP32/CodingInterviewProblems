@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.finish;
+package Leetcode.easy;
 
 public class LC796_RotateString {
     public static void main(String[] args) {
