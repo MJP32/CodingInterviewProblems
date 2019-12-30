@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.Arrays;

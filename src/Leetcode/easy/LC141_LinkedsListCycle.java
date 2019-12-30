@@ -1,4 +1,7 @@
-package Leetcode.zap.todo;
+package Leetcode.easy;
+
+
+import Leetcode.common.ListNode;
 
 public class LC141_LinkedsListCycle {
     public static void main(String[] args) {

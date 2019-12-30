@@ -1,5 +1,7 @@
 package Leetcode.easy;
 
+import Leetcode.common.ListNode;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 

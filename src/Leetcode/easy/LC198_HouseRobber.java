@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.easy;
 
 public class LC198_HouseRobber {
     public static void main(String[] args) {

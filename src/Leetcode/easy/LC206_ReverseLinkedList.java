@@ -1,6 +1,6 @@
 package Leetcode.easy;
 
-import Leetcode.easy.ListNode;
+import Leetcode.common.ListNode;
 
 import java.util.Stack;
 

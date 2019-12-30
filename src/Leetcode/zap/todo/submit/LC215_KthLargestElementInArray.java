@@ -10,7 +10,7 @@ public class LC215_KthLargestElementInArray {
     public int findKthLargest(int[] nums, int k) {
         PriorityQueue<Integer> minHeap = new PriorityQueue<>();
         for(Integer i : nums) {
-            minHeap.add(i);
+            minHeap.add(nums[i]);
             if (minHeap.size() > k) {
                 minHeap.remove();
             }

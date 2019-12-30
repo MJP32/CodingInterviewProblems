@@ -1,5 +1,7 @@
 package Leetcode.medium;
 
+import Leetcode.common.ListNode;
+
 public class LC2_AddTwoNumbers {
 
 
@@ -65,10 +67,3 @@ public class LC2_AddTwoNumbers {
 }
 
 
- class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-          val = x;
-      }
- }

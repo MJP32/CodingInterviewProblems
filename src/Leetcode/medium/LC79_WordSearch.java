@@ -1,4 +1,4 @@
-package Leetcode.zap.todo;
+package Leetcode.medium;
 
 public class LC79_WordSearch {
     public static void main(String[] args) {
