@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.submit;
+package Leetcode.easy;
 
 import Leetcode.common.ListNode;
 

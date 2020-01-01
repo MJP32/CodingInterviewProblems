@@ -2,6 +2,9 @@ package Leetcode.trees;
 
 import Leetcode.common.TreeNode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LC617_MergeTwoBinaryTrees {
     public static void main(String[] args) {
         LC617_MergeTwoBinaryTrees lc617 = new LC617_MergeTwoBinaryTrees();
@@ -22,11 +25,11 @@ public class LC617_MergeTwoBinaryTrees {
 
         TreeNode node = lc617.mergeTrees(tree, tree2);
 
-        while(node != null){
-            System.out.println(node.val);
-            node = node.left;
-        }
+        List<Integer> ls = lc617.inorderTraversal(node);
 
+        for(Integer i : ls){
+            System.out.print (i + " ");
+        }
 
         System.out.println();
 
@@ -48,6 +51,27 @@ public class LC617_MergeTwoBinaryTrees {
         return t1;
 
 
+    }
+
+
+
+
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+
+        inorderTraversal(root, result);
+
+
+        return result;
+    }
+
+    private void inorderTraversal(TreeNode root, List<Integer> result) {
+
+        if(root != null){
+            inorderTraversal(root.left, result);
+            result.add(root.val);
+            inorderTraversal(root.right, result);
+        }
     }
 }
 

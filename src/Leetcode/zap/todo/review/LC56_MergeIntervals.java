@@ -19,8 +19,11 @@ public class LC56_MergeIntervals {
 
         Arrays.sort(intervals, (arr1, arr2)-> Integer.compare(arr1[0],arr2[0]));
 
+
+
         List<int[]> output = new ArrayList<>();
         int[] currInterval = intervals[0];
+        System.out.println(Arrays.toString(currInterval));
         output.add(currInterval);
 
         for(int[] interval: intervals){
@@ -39,7 +42,6 @@ public class LC56_MergeIntervals {
             }
 
         }
-
 
 
 

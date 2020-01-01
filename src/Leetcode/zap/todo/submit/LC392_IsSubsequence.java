@@ -1,4 +1,4 @@
-package Leetcode.zap.todo.review;
+package Leetcode.zap.todo.submit;
 
 public class LC392_IsSubsequence {
     public static void main(String[] args) {
