@@ -14,7 +14,7 @@ public class LC226_InvertBinaryTree {
         tree.left = new TreeNode(2);
         tree.right = new TreeNode(3);
         tree.left.left = new TreeNode(4);
-        tree.left.right = new TreeNode(55);
+        tree.left.right = new TreeNode(5);
 
         LC226_InvertBinaryTree lc226 = new LC226_InvertBinaryTree();
         PrintTree pt = new PrintTree();
