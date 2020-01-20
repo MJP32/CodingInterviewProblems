@@ -5,23 +5,26 @@ public class LC55_JumpGame {
 
         LC55_JumpGame lc55 = new LC55_JumpGame();
         System.out.println(lc55.canJump(new int[]{2,3,1,1,4}));
+        System.out.println(lc55.canJump(new int[]{3,2,1,0,4}));
     }
     public boolean canJump(int[] nums) {
 
-        int[] arr = new int[nums.length];
+        int lastIndexCanJump = nums.length -1;
 
 
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = nums.length -1; i >=0 ; i--) {
 
-
-            int steps = nums[i];
-
-            //while()
-
+            System.out.println(i + nums[i] + " " + lastIndexCanJump);
+            if(i + nums[i] >= lastIndexCanJump){
+                lastIndexCanJump =i;
+            }
+            else{
+                return false;
+            }
 
         }
 
-        return true;
+        return lastIndexCanJump ==0;
 
 
     }
