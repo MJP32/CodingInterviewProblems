@@ -17,25 +17,30 @@ public class LC230_KSmallestElementinBST {
     }
     public int kthSmallest(TreeNode root, int k) {
 
-        List<Integer> result = new ArrayList<>();
-        inOrderTraversal(root, result);
+        int[] nums = new int[2];
+
+        inOrderTraversal(root, nums, k);
 
 
-        result.forEach(l-> System.out.println(l));
+        //result.forEach(l-> System.out.println(l));
 
 
-        return 1;
+        return nums[1];
 
     }
 
 
-    private void inOrderTraversal(TreeNode root, List<Integer> result) {
+    private void inOrderTraversal(TreeNode root, int[] nums, int k ) {
 
-        if(root != null){
-            inOrderTraversal(root.left, result);
-            result.add(root.val);
-            inOrderTraversal(root.right,result) ;
+        if(root == null){
+            return;
         }
+        inOrderTraversal(root.left,nums, k ) ;
+        if(nums[0]++ == k){
+            nums[1] = root.val;
+            return;
+        }
+        inOrderTraversal(root.right,nums, k ) ;
     }
 
 

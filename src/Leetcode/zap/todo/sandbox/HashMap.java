@@ -16,7 +16,7 @@ public class HashMap {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }*/
 
-int val = 0 ;
+        int val = 0 ;
         for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
             if (entry.getValue().equals(1)) {
                 val =  entry.getKey();
