@@ -3,6 +3,7 @@ package Leetcode.common;
 import java.util.List;
 
 public class Node {
+    public String word;
     public int val;
     public List<Node> children;
 
@@ -15,5 +16,9 @@ public class Node {
     public Node(int _val, List<Node> _children) {
         val = _val;
         children = _children;
+    }
+    public Node(String w, int i) {
+        word = w;
+        val = i;
     }
 }
