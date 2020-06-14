@@ -1,11 +1,40 @@
 package Leetcode.zap.todo.finish;
 
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
 public class LC621_TaskScheduler {
     public static void main(String[] args) {
+/*Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks. Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.
 
+However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.
+
+You need to return the least number of intervals the CPU will take to finish all the given tasks.
+
+
+
+Example:
+
+Input: tasks = ["A","A","A","B","B","B"], n = 2
+Output: 8
+Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
+*/
+
+        System.out.println(new LC621_TaskScheduler().leastInterval(new char[]{'A','A','A','B','B','B'}, 2));
     }
 
     public int leastInterval(char[] tasks, int n) {
-return 11;
+
+        HashMap<Character, Integer> map = new HashMap<>();
+
+        for (Character c : tasks){
+            map.put(c, map.getOrDefault(c, 0)+1);
+        }
+
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a,b)->b-a);
+        maxHeap.addAll(map.values());
+
+        int cycles =0;
+        return 11;
     }
 }

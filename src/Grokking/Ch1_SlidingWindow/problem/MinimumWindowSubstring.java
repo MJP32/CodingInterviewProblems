@@ -45,6 +45,6 @@ public class MinimumWindowSubstring {
 //        System.out.println(MinimumWindowSubstring.findSubstring("abdabca", "abc"));
 //        System.out.println(MinimumWindowSubstring.findSubstring("adcad", "abc"));
 //        System.out.println(MinimumWindowSubstring.findSubstring("ADOBECODEBANC", "ABC"));
-        System.out.println(MinimumWindowSubstring.findSubstring("bbaa", "aba"));
+        System.out.println(MinimumWindowSubstring.findSubstring("dcbefebce", "fd"));
     }
 }

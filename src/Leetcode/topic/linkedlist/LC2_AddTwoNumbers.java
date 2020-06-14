@@ -21,48 +21,43 @@ public class LC2_AddTwoNumbers {
 
         ListNode result = addTwoNumbers(l1_1, l2_1);
 
-        while(result != null) {
+        while (result != null) {
             System.out.print(result.val + " ");
             result = result.next;
         }
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode pointer1 = l1;
-        ListNode pointer2 = l2;
-
-        ListNode result = new ListNode(0);
-        ListNode resultPointer = result;
+        ListNode resultHead = new ListNode(-1);
+        ListNode result = resultHead;
 
         int sum = 0;
         int digit = 0;
-        int carryover = 0;
-
-        while(pointer1 != null || pointer2 != null || carryover != 0) {
-            resultPointer.next = new ListNode(0);
-            resultPointer = resultPointer.next;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            result.next = new ListNode(0);
+            result = result.next;
 
             sum = 0;
-
-            if(pointer1 != null) {
-                sum = sum + pointer1.val;
-                pointer1 = pointer1.next;
+            if (l1 != null) {
+                sum += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                sum += l2.val;
+                l2 = l2.next;
             }
 
-            if(pointer2 != null) {
-                sum = sum + pointer2.val;
-                pointer2 = pointer2.next;
-            }
-
-            sum = sum + carryover;
-
+            sum = sum + carry;
             digit = sum % 10;
-            carryover = sum/10;
+            carry = sum / 10;
 
-            resultPointer.val = digit;
+            result.val = digit;
+
+
         }
 
-        return result.next;
+        return resultHead.next;
     }
 }
 

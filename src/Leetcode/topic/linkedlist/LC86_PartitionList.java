@@ -5,6 +5,17 @@ import Leetcode.common.ListNode;
 public class LC86_PartitionList {
     public static void main(String[] args) {
 
+        /*Given a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+
+        You should preserve the original relative order of the nodes in each of the two partitions.
+
+        Example:
+
+        Input: head = 1->4->3->2->5->2, x = 3
+        Output: 1->2->2->4->3->5
+
+
+        */
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(4);
         ListNode node3 = new ListNode(3);
@@ -24,32 +35,35 @@ public class LC86_PartitionList {
         ListNode ls = lc86.partition(node1, 3);
 
         while(ls != null){
-            System.out.println(ls.val);
+            System.out.print(ls.val + " ");
             ls = ls.next;
         }
     }
-    public ListNode partition(ListNode head, int x){
-        ListNode l1, p1,l2, p2, p=head;
+    public ListNode partition(ListNode head, int x) {
 
-        l1=p1=new ListNode(0);
-        l2=p2=new ListNode(0);
+        ListNode beforeHead = new ListNode(0);
+        ListNode afterHead = new ListNode(0);
+        ListNode before = beforeHead;
+        ListNode after = afterHead;
 
-        while(p != null){
-            if(p.val < x){
-                p1.next = p;
-                p1 = p1.next;
+        while(head != null){
+
+            if(head.val < x){
+                before.next=head;
+                before=before.next;
             }
             else{
-                p2.next = p;
-                p2 = p2.next;
+                after.next =head;
+                after = after.next;
             }
 
-            p=p.next;
+            head= head.next;
         }
-        p2.next =null;
-        p1.next=l2.next;
 
 
-        return l1.next;
+        after.next = null;
+        before.next = afterHead.next;
+        return beforeHead.next;
+
     }
 }

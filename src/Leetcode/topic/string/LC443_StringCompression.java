@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class LC443_StringCompression {
     public static void main(String[] args) {
-        System.out.println(new LC443_StringCompression().compress(new char[]{'a','a','b','b','b','c','c'}));
+        System.out.println(new LC443_StringCompression().compress(new char[]{'a','a','b','b','b','a','a'}));
     }
     public int compress(char[] chars) {
 
@@ -14,7 +14,7 @@ public class LC443_StringCompression {
         while (i< chars.length) {
 
             int j =i;
-            while (j < chars.length && chars[j] == chars[i]) {
+            while (j < chars.length && chars[i] == chars[j]) {
                 j++;
             }
 
