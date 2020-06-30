@@ -2,7 +2,7 @@ package Leetcode.topic.bfs;
 
 import java.util.*;
 
-public class LC127_WordLadder {
+public class LC126_WordLadder2 {
     public static void main(String[] args) {
 
         List<String> list = new ArrayList<>();
@@ -13,9 +13,12 @@ public class LC127_WordLadder {
         list.add("lot");
         list.add("log");
         //list.add("cog");
-        System.out.println(new LC127_WordLadder().ladderLength("hit","cog" ,list));
+       new LC126_WordLadder2().findLadders("hit","cog" ,list).forEach(k-> System.out.println(k));
     }
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+    public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
+
+        List<List<String>> results = new ArrayList<>();
+        //results.add(beginWord);
         Set<String> set = new HashSet<String>(wordList);
 
         int count = 0;
@@ -28,7 +31,7 @@ public class LC127_WordLadder {
                 String currWord = queue.poll();
                 // found the endWord, return!
                 if(currWord.equals(endWord))
-                    return count+1;
+                    return results;
 
                 for(int j = 0; j < currWord.length(); j++) {
                     for(char next = 'a'; next <= 'z'; next++) {
@@ -44,9 +47,10 @@ public class LC127_WordLadder {
                     }
                 }
             }
-            count++;
+            //results.
+            //count++;
         }
-        return 0;
+        return results;
 
     }
 }

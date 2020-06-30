@@ -39,13 +39,13 @@ public class LC92_ReverseLinkedList2 {
             n--;
         }
         ListNode con = prev, tail = curr;
-        ListNode third = null;
+        ListNode next = null;
 
         while(n >0){
-            third = curr.next;
+            next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = third;
+            curr = next;
             n--;
         }
 
