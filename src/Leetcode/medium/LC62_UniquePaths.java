@@ -3,7 +3,7 @@ package Leetcode.medium;
 public class LC62_UniquePaths {
     public static void main(String[] args) {
         LC62_UniquePaths lc62 =new LC62_UniquePaths();
-        System.out.println(lc62.uniquePaths(3, 2));
+        System.out.println(lc62.uniquePaths(5, 5));
     }
 
 

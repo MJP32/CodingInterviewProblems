@@ -5,6 +5,7 @@ public class LC152_MaxSubarrayProduct {
         LC152_MaxSubarrayProduct lc152 = new LC152_MaxSubarrayProduct();
         System.out.println(lc152.maxProduct(new int[]{2,3,-2,4}));
 
+        //keep track of min for negatives in case we get another - later in the array
     }
 
     private int maxProduct(int[] nums) {

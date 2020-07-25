@@ -4,9 +4,10 @@ import java.util.Arrays;
 
 public class LevenshteinDistance {
     public static void main(String[] args) {
-        System.out.println(levenshteinDistance("yabd","abc"));
-        System.out.println(levenshteinDistance("sea","eat"));
-        System.out.println(levenshteinDistance("a","b"));
+        System.out.println(levenshteinDistance("ABCDEFG","ABDFFGH"));
+//        System.out.println(levenshteinDistance("yabd","abc"));
+//        System.out.println(levenshteinDistance("sea","eat"));
+//        System.out.println(levenshteinDistance("a","b"));
     }
     public static int levenshteinDistance(String str1, String str2) {
         int[][] edits = new int[str2.length()+1][str1.length()+1];

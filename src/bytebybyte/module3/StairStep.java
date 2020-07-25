@@ -5,11 +5,13 @@ import java.util.List;
 
 public class StairStep {
     public static void main(String[] args) {
-        System.out.println(stairStep(4));
+        stairStep(4).forEach(k-> System.out.println(k));
     }
+
     public static List<List<Integer>> stairStep(int n){
         return stairStep(n, 0);
     }
+
     public static List<List<Integer>> stairStep(int n, int currentStep){
         if (currentStep == n) {
             List<List<Integer>> result = new LinkedList<>();

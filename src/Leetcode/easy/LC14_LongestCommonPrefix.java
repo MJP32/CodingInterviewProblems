@@ -2,27 +2,19 @@ package Leetcode.easy;
 
 public class LC14_LongestCommonPrefix {
     public static void main(String[] args) {
-        System.out.println(new LC14_LongestCommonPrefix().longestCommonPrefix(new String[]{"flower","flow","flight"}));
+        LC14_LongestCommonPrefix lc14 = new LC14_LongestCommonPrefix();
+        System.out.println(lc14.longestCommonPrefix(new String[]{"flower","flow","flight"}));
     }
 
     public String longestCommonPrefix(String[] strs) {
-        String longestCommonPrefix = "";
-        if (strs == null || strs.length == 0) {
-            return longestCommonPrefix;
-        }
-
-        int index = 0;
-        for (char c : strs[0].toCharArray()) {
-            for (int i = 1; i < strs.length; i++) {
-                if (index >= strs[i].length() || c != strs[i].charAt(index)) {
-                    return longestCommonPrefix;
-                }
+        if(strs.length ==0)
+            return "";
+        String prefix = strs[0];
+        for(int i =1; i< strs.length;i++){
+            while(strs[i].indexOf(prefix)!=0){
+                prefix = prefix.substring(0,prefix.length()-1);
             }
-            longestCommonPrefix += c;
-            index++;
         }
-
-
-        return longestCommonPrefix;
+        return prefix;
     }
 }
