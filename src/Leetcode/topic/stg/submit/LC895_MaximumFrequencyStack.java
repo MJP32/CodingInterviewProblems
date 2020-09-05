@@ -21,7 +21,7 @@ public class LC895_MaximumFrequencyStack {
 
     public void push(int x) {
         map.put(x, map.getOrDefault(x, 0)+1);
-        maxHeap.offer(new Element(x, map.get(x), sequenceNumber++);
+        maxHeap.offer(new Element(x, map.get(x), sequenceNumber++));
 
 
     }

@@ -1,6 +1,8 @@
 package Leetcode.zap.todo.finish;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class LC621_TaskScheduler {
@@ -20,7 +22,9 @@ Output: 8
 Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
 */
 
-        System.out.println(new LC621_TaskScheduler().leastInterval(new char[]{'A','A','A','B','B','B'}, 2));
+        //System.out.println(new LC621_TaskScheduler().leastInterval(new char[]{'A','A','A','B','B','B'}, 2));
+        System.out.println(new LC621_TaskScheduler().leastInterval(new char[]{'A','A','A','A','A','A','B','C','D',
+                'E','F','G'}, 2));
     }
 
     public int leastInterval(char[] tasks, int n) {
@@ -35,6 +39,23 @@ Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
         maxHeap.addAll(map.values());
 
         int cycles =0;
-        return 11;
+
+        while (!maxHeap.isEmpty()) {
+            List<Integer> temp = new ArrayList<>();
+            for (int i=0; i < n; i++) {
+                if (!maxHeap.isEmpty()) {
+                    temp.add(maxHeap.remove());
+                }
+
+            }
+
+            for (int i :temp) {
+                if(--i >0){
+                    maxHeap.add(i);
+                }
+            }
+            cycles +=maxHeap.isEmpty()?temp.size():n+1;
+        }
+        return cycles;
     }
 }

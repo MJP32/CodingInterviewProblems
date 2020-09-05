@@ -1,103 +1,56 @@
 package Leetcode.topic.stg;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class LC994_RottingOranges {
     public static void main(String[] args) {
-        System.out.println(new LC994_RottingOranges().orangesRotting(new int[][]{{1},{2}}));
+        int[][] arr = new int[][]{{2,1,1},{1,1,0},{0,1,1}};
+
+        System.out.println(new LC994_RottingOranges().orangesRotting(arr));
+
+        System.out.println(Arrays.deepToString(arr));
     }
+
     public int orangesRotting(int[][] grid) {
 
-
-        int minutes = 0;
+        Queue<int[]> q = new LinkedList();
+        int freshCount = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-
                 if (grid[i][j] == 2) {
-                    grid[i][j] = 3;
-                    minutes += makeRotten(grid, i, j);
+                    q.add(new int[]{i, j});
                 }
-
-            }
-
-        }
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == 1) {
-                    return -1;
+                    freshCount++;
                 }
             }
         }
+        int[][] direction = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+        int time = 0;
 
-        //System.out.println(Arrays.deepToString(grid));
+        while (!q.isEmpty()) {
+            time++;
+            int size = q.size();
 
-        return minutes;
-    }
-
-    private int makeRotten(int[][] grid, int i, int j) {
-        int minutes = 0;
-      /* if(grid[0].length==1){
-           System.out.println("here");
-       }
-        if(grid.length==1){
-            System.out.println("here");
-        }*/
-
-//        System.out.println("->"+grid[0].length);
-//        System.out.println("->"+grid.length);
-//        System.out.println("->"+i);
-//        System.out.println("->"+j);
-
-
-        if (grid[0].length == 1) {
-            return minutes;
-        }
-        //right
-        if (j < grid.length - 1) {
-
-
-            if (grid[i][j + 1] == 1) {
-                grid[i][j + 1] = 2;
-                minutes++;
+            while (size-- > 0) {
+                int[] xy = q.poll();
+                for (int[] d : direction) {
+                    int x = xy[0] + d[0];
+                    int y = xy[1] + d[1];
+                    if (x < 0 || y < 0 || x >= grid.length || y >= grid[0].length || grid[x][y] == 0 || grid[x][y] == 2) {
+                        continue;
+                    }
+                    q.add(new int[]{x, y});
+                    grid[x][y] = 2;
+                    freshCount--;
+                }
             }
-
         }
-
-        //left
-        if (j > 0 && grid[i][j - 1] != 2) {
-
-
-            if (grid[i][j - 1] == 1) {
-                grid[i][j - 1] = 2;
-                minutes++;
-            }
-
-        }
-        if (grid.length == 1) {
-            return minutes;
-        }
-
-
-        //up1
-        if (i > 0 && grid[i - 1][j] != 2) {
-
-
-            if (grid[i - 1][j] == 1) {
-                grid[i - 1][j] = 2;
-                minutes++;
-            }
-
-        }
-
-        //down
-        if (i < grid[i].length - 1) {
-
-
-            if (grid[i + 1][j] == 1) {
-                grid[i + 1][j] = 2;
-                minutes++;
-            }
-
-        }
-
-        return minutes != 0 ? 1 : 0;
+        return freshCount == 0 ? time : -1;
     }
 }
+
+
+

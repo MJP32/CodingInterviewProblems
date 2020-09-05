@@ -4,6 +4,21 @@ import java.util.Arrays;
 
 public class LC59_SpiralMatrix2 {
     public static void main(String[] args) {
+        /*
+        Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+
+        Example:
+
+        Input: 3
+        Output:
+        [
+         [ 1, 2, 3 ],
+         [ 8, 9, 4 ],
+         [ 7, 6, 5 ]
+        ]
+
+        */
+
         System.out.println(Arrays.deepToString(new LC59_SpiralMatrix2().generateMatrix(3)));
     }
 
@@ -24,22 +39,22 @@ public class LC59_SpiralMatrix2 {
         1,0
         1,1*/
 
-        if(matrix.length == 0){
+        if (matrix.length == 0) {
             return matrix;
         }
 
 
-        int rowBeg =0;
-        int rowEnd = matrix.length-1;
-        int colBeg =0;
-        int colEnd =matrix[0].length -1;
+        int rowBeg = 0;
+        int rowEnd = matrix.length - 1;
+        int colBeg = 0;
+        int colEnd = matrix[0].length - 1;
 
-        int count =1;
+        int count = 1;
 
-        while(rowBeg <=rowEnd && colBeg <= colEnd){
+        while (rowBeg <= rowEnd && colBeg <= colEnd) {
 
             for (int i = colBeg; i <= colEnd; i++) {
-               matrix[rowBeg][i] = count++;
+                matrix[rowBeg][i] = count++;
             }
             rowBeg++;
 
@@ -50,8 +65,8 @@ public class LC59_SpiralMatrix2 {
 
             colEnd--;
 
-            if(rowBeg<=rowEnd){
-                for (int i = colEnd; i >=colBeg ; i--) {
+            if (rowBeg <= rowEnd) {
+                for (int i = colEnd; i >= colBeg; i--) {
                     matrix[rowEnd][i] = count++;
 
                 }
@@ -59,7 +74,7 @@ public class LC59_SpiralMatrix2 {
 
             rowEnd--;
 
-            if(colBeg <= colEnd){
+            if (colBeg <= colEnd) {
                 for (int i = rowEnd; i >= rowBeg; i--) {
                     matrix[i][colBeg] = count++;
                 }

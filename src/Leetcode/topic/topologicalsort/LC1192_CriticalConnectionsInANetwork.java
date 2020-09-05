@@ -5,6 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 public class LC1192_CriticalConnectionsInANetwork {
+    ArrayList<Integer>[] graph;
+    List<List<Integer>> criticalConnections;
+    int[] visitedTimes;
+    int[] lowTimes;
+    int time;
+
     public static void main(String[] args) {
 
 
@@ -35,22 +41,52 @@ public class LC1192_CriticalConnectionsInANetwork {
         3: 0  -> citical
           */
 
-        int[] connectionCount = new int[connections.size()];
-        for(List<Integer> connection : connections){
-            connectionCount[connection.get(0)]++;
-        }
+       graph = new ArrayList[n];
+       criticalConnections = new ArrayList<>();
+       visitedTimes = new int[n];
+       lowTimes = new int[n];
+       time =0;
 
-        System.out.println(Arrays.toString(connectionCount));
-
-        return connections;
+       buildGraph(connections);
+       boolean[] visited = new boolean[n];
+       dfs(visited, 0, -1);
+        return criticalConnections;
     }
 
-    class Pair{
-        public int x;
-        public int y;
-        public Pair(int x, int y){
-            this.x =x;
-            this.y= y;
+    private void dfs(boolean[] visited, int current, int parent) {
+        visited[current] = true;
+        visitedTimes[current] = time;
+        lowTimes[current] = time;
+        time++;
+
+        for (int neighbor: graph[current]) {
+            if (neighbor == parent) {
+                continue;
+            }
+            if (!visited[neighbor]) {
+                dfs(visited, neighbor, current);
+                lowTimes[current] = Math.min(lowTimes[current], lowTimes[neighbor]);
+                if (visitedTimes[current] < lowTimes[neighbor]) {
+                    criticalConnections.add(Arrays.asList(current,neighbor));
+                }
+            }
+            else{
+                lowTimes[current] = Math.min(lowTimes[current], visitedTimes[neighbor]);
+            }
         }
+    }
+
+    private void buildGraph(List<List<Integer>> connections){
+
+        for (int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for (List<Integer> conn: connections) {
+            int a = conn.get(0);
+            int b = conn.get(1);
+            graph[a].add(b);
+            graph[b].add(a);
+        }
+
     }
 }
