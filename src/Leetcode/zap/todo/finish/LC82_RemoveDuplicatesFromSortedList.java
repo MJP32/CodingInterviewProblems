@@ -7,7 +7,7 @@ public class LC82_RemoveDuplicatesFromSortedList {
     public static void main(String[] args) {
 
         LC82_RemoveDuplicatesFromSortedList lc82 = new LC82_RemoveDuplicatesFromSortedList();
-        List ls = new List();
+        List<Number> ls = new List<Number>();
         ListNode headList = ls.getSortedListWithDuplicates();
 
         ListNode head = lc82.deleteDuplicates(headList);

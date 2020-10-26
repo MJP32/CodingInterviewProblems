@@ -1,4 +1,4 @@
-package Amazon;
+package Amazon.assessment;
 
 public class AmazonFresh2 {
     public static void main(String[] args) {

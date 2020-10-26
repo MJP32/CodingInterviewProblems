@@ -1,32 +1,35 @@
-package Leetcode.topic.stg.submit;
+package AlgoExpert.dp;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LC131_PaliddromeParitioning {
+public class PaliddromeParitioningMinCuts {
     public static void main(String[] args) {
-        new LC131_PaliddromeParitioning().partition("aab").forEach(k-> System.out.println(k));
+        System.out.println(new PaliddromeParitioningMinCuts().partition("noonabbad"));
     }
 
-    public List<List<String>> partition(String s ){
+    public int partition(String s ){
         List<List<String>> result = new ArrayList<>();
-        dfs(s, 0, new ArrayList<>(), result);
-        return result;
+        int min = dfs(s, 0, new ArrayList<>(), result, Integer.MAX_VALUE);
+        //result.forEach(k-> System.out.println(k));
+        return min;
     }
 
-    private void dfs(String s, int index, ArrayList<String> palindrome, List<List<String>> result) {
+    private int dfs(String s, int index, ArrayList<String> palindrome, List<List<String>> result, int min) {
         if(index == s.length()){
+            min= Math.min(min, palindrome.size());
             result.add(new ArrayList<>(palindrome));
-            return;
+            return min;
         }
         for(int i =index+1; i<= s.length();i++){
             if(isPalindrome(s.substring(index, i))){
                 palindrome.add(s.substring(index, i));
-                dfs(s, i , palindrome, result);
+                min =dfs(s, i , palindrome, result, min);
                 palindrome.remove(palindrome.size()-1);
 
             }
         }
+        return min;
     }
 
     private boolean isPalindrome(String s){

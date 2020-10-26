@@ -24,13 +24,17 @@ public class RepeatedSubstring {
 
         */
 
+        System.out.println(repeatedSubstringPatternRabinKarp("aba"));
+        System.out.println(repeatedSubstringPatternRabinKarp("abcdeabcabcdeabc"));
         System.out.println(repeatedSubstringPatternKMP("aba"));
         System.out.println(repeatedSubstringPatternKMP("abcdeabcabcdeabc"));
     }
     public static boolean repeatedSubstringPatternRabinKarp(String s){
         int n = s.length();
-        if (n < 2) return false;
-        if (n == 2) return s.charAt(0) == s.charAt(1);
+        if (n < 2)
+            return false;
+        if (n == 2)
+            return s.charAt(0) == s.charAt(1);
 
         for (int i = (int)Math.sqrt(n); i > 0; i--) {
             if (n % i == 0) {

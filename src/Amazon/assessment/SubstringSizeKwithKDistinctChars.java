@@ -1,10 +1,13 @@
-package Amazon;
+package Amazon.assessment;
 
 import java.util.*;
 
 public class SubstringSizeKwithKDistinctChars {
     public static void main(String[] args) {
-        new SubstringSizeKwithKDistinctChars().count("abcabc", 3).forEach(k-> System.out.println(k));
+        new SubstringSizeKwithKDistinctChars().count("awaglk", 4).forEach(k-> System.out.println(k));
+        new SubstringSizeKwithKDistinctChars().count("democracy", 5).forEach(k-> System.out.println(k));
+        new SubstringSizeKwithKDistinctChars().count("wawaglknagagwunagkwkwagl", 4).forEach(k-> System.out.println
+                (k));
     }
     public List<String> count(String s , int k ){
         Set<String> result = new HashSet<>();
@@ -14,7 +17,7 @@ public class SubstringSizeKwithKDistinctChars {
         for(int end = 0;end < s.length();end++ ) {
             map.put(s.charAt(end),map.getOrDefault(s.charAt(end), 0)+1);
 
-            if(map.size()==k && end - start+1 == k){
+            if(map.size()==k-1 && end - start+1 == k&& start >=0){
                 result.add(s.substring(start, end+1));
             }
 

@@ -27,11 +27,11 @@ public class Permutations {
     }
     public static void getPermutations(
             List<Integer> array, List<Integer> currentPermutation, List<List<Integer>>results){
-        System.out.print(i++ + ".  \t"   );
-        currentPermutation.forEach(k-> System.out.print(k + " "));
-        System.out.print("\t\t\t ->");
-        array.forEach(k-> System.out.print(k + " "));
-        System.out.println();
+//        System.out.print(i++ + ".  \t"   );
+//        currentPermutation.forEach(k-> System.out.print(k + " "));
+//        System.out.print("\t\t\t ->");
+//        array.forEach(k-> System.out.print(k + " "));
+//        System.out.println();
 
         if(array.size()==0 && currentPermutation.size()> 0){
             results.add(currentPermutation);

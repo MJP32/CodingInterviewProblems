@@ -1,6 +1,6 @@
 package Leetcode.common;
 
-public class List {
+public class List<I extends Number> {
 
 
 

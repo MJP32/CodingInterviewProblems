@@ -1,0 +1,119 @@
+package Leetcode.topic.trie;
+
+import java.util.*;
+
+public class LC212_WordSearch2 {
+    public List<String> findWords(char[][] board, String[] words) {
+        Trie trie = new Trie();
+        for(String word : words){
+            trie.add(word);
+        }
+        Set<String> finalWords = new HashSet<>();
+        boolean[][] visited = new boolean[board.length][board[0].length];
+
+        for(int i =0; i< board.length; i++){
+            for(int j =0; j< board[i].length;j++){
+                explore(i, j, board, trie.root, visited, finalWords);
+
+            }
+        }
+
+        return new ArrayList<>(finalWords);
+    }
+
+    private void explore(int i, int j, char[][]board, TrieNode root, boolean[][] visited, Set<String> finalWords){
+        if(visited[i][j]){
+            return;
+        }
+        char letter = board[i][j];
+
+        if(!root.children.containsKey(letter)){
+            return;
+        }
+        visited[i][j] = true;
+        root = root.children.get(letter);
+        if(root.children.containsKey('*')){
+            finalWords.add(root.word);
+        }
+
+        List<Integer[]> neighbors = getNeighbors(i,j, board);
+        for(Integer[] neighbor: neighbors){
+            explore(neighbor[0], neighbor[1], board, root, visited, finalWords);
+        }
+        visited[i][j] = false;
+    }
+    private static List<Integer[]> getNeighbors(int i, int j, char[][] board) {
+        List<Integer[]> neighbors = new ArrayList<>();
+
+        //top left
+       /* if (i > 0 && j > 0) {
+            neighbors.add(new Integer[]{i-1, j-1});
+        }
+
+        //top right
+        if (i > 0 && j < board[0].length-1) {
+            neighbors.add(new Integer[]{i-1, j+1});
+        }
+
+        //bottom right
+        if (i < board.length-1 && j < board[0].length-1) {
+            neighbors.add(new Integer[]{i+1, j+1});
+        }
+
+        //bottom left
+        if (i < board.length-1 && j > 0) {
+            neighbors.add(new Integer[]{i+1, j-1});
+        }
+        */
+        //top
+        if (i > 0) {
+            neighbors.add(new Integer[]{i-1,j});
+        }
+
+        //bottom
+        if(i  < board.length -1){
+            neighbors.add(new Integer[]{i+1, j});
+        }
+
+        //left
+        if(j > 0){
+            neighbors.add(new Integer[]{i, j-1});
+        }
+
+        //right
+        if(j < board[0].length-1){
+            neighbors.add(new Integer[]{i, j+1});
+        }
+
+        return neighbors;
+    }
+    static class TrieNode{
+        Map<Character, TrieNode> children = new HashMap<>();
+        String word= "";
+    }
+    static class Trie{
+        TrieNode root;
+        char endSymbol;
+
+        public Trie(){
+            this.root = new TrieNode();
+            this.endSymbol = '*';
+        }
+
+        public void add(String str){
+            TrieNode node = this.root;
+            for(int i =0; i < str.length();i++){
+                char letter = str.charAt(i);
+                if(!node.children.containsKey(letter)){
+                    TrieNode newNode = new TrieNode();
+                    node.children.put(letter, newNode);
+                }
+                node = node.children.get(letter);
+            }
+            node.children.put(this.endSymbol, null);
+            node.word =str;
+        }
+
+    }
+}
+

@@ -1,15 +1,15 @@
-package Leetcode.medium;
+package Leetcode.pattern.backtracking;
 
 public class LC79_WordSearch {
     public static void main(String[] args) {
         LC79_WordSearch lc79 = new LC79_WordSearch();
-        
+
         char[][] board =
-            {
-                {'A','B','C','E'},
-                {'S','F','C','S'},
-                {'A','D','E','E'}
-            };
+                {
+                        {'A','B','C','E'},
+                        {'S','F','C','S'},
+                        {'A','D','E','E'}
+                };
 
         System.out.println(lc79.exist(board, "ABCCED"));
         System.out.println(lc79.exist(board, "DOG"));
@@ -19,9 +19,9 @@ public class LC79_WordSearch {
         for(int i =0; i< board.length;i++){
             for(int j =0; j< board[i].length;j++){
                 if(board[i][j] == word.charAt(0)){
-                   result =  dfs(board, i, j, 0, word);
-                   if(result)
-                     return true;
+                    result =  dfs(board, i, j, 0, word);
+                    if(result)
+                        return true;
                 }
             }
         }
@@ -46,9 +46,10 @@ public class LC79_WordSearch {
         boolean found = dfs(board, i+1, j, count+1, word)
                 ||dfs(board, i-1, j, count+1, word)
                 ||dfs(board, i, j+1, count+1, word)
-        ||dfs(board, i, j-1, count+1, word);
+                ||dfs(board, i, j-1, count+1, word);
 
         board[i][j] = temp;
         return found;
     }
+
 }

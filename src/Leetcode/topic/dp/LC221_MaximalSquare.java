@@ -1,5 +1,7 @@
 package Leetcode.topic.dp;
 
+import java.util.Arrays;
+
 public class LC221_MaximalSquare {
     public static void main(String[] args) {
         char[][] board = new char[][]{
@@ -40,7 +42,7 @@ public class LC221_MaximalSquare {
             }
         }
 
-
+        System.out.println(Arrays.deepToString(dp));
         return max*max;
     }
 }

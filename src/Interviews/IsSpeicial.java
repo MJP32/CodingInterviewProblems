@@ -21,6 +21,10 @@ public class IsSpeicial {
     public static List<String> specialStrings(String[] strings) {
         Trie trie = new Trie();
 
+        for (String str : strings){
+            trie.insert(str);
+        }
+
         return Arrays.asList(strings).stream()
                 .filter(string->isSpecial(string, trie.root, 0,0,trie))
                 .collect(Collectors.toList());
@@ -61,7 +65,7 @@ public class IsSpeicial {
             TrieNode current = root;
             for (int i = 0; i < string.length(); i++) {
                 char letter = string.charAt(i);
-                if (current.children.containsKey(letter)) {
+                if (!current.children.containsKey(letter)) {
                     TrieNode newNode = new TrieNode();
                     current.children.put(letter, newNode);
                 }
