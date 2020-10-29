@@ -3,89 +3,81 @@ package AlgoExpert.dp;
 import java.util.*;
 
 public class LongestStringChain {
-
     public static void main(String[] args) {
+        List<String> words = Arrays.asList("e","z", "zz", "zzz", "abde", "abc", "abd", "zzzz", "abcde", "ade", "ae",
+                "labde", "abcdef","zzzzzzzzzzzzzz");
 
-//        String[] words = {"abde", "abc", "abd", "abcde", "ade", "ae", "labde", "abcdef", "e"};
+        //  ans = abcdef abcde abde ade ae e
+        //        List<String> words = Arrays.asList( "abde","ade","ae","abd", "e");
+
+        longestStringChain(words).forEach(k -> System.out.print(k + " "));
 
 
-        /*
-        *      5       4        5      1    3
-        *    abcdef  [abcde] [abde] [abd, ade]  2    1
-        *                                      [ae] [e]
-        *    labde
-        * */
-
-        String[] words = {"abde","ade","ae","abd", "e"};
-        System.out.println(new LongestStringChain().longestStrChain(words));
-//        System.out.println(new LongestStringChain().maxLength);
-//        new LongestStringChain().longestStrChain(words).forEach(k -> System.out.println(k));
     }
 
-    int maxLength = 0;
-//    Map<String, Integer> map = new HashMap<>();
-    Map<String, Integer> wordMap = new HashMap<>();
-    public int longestStrChain(String[] words) {
-        Set<String> set = new HashSet<>();
-        for(String s : words){
-            set.add(s);
+    public static List<String> longestStringChain(List<String> strings) {
+        Collections.sort(strings, Comparator.comparingInt(String::length));
+        Map<String, StringChain> stringChains = new HashMap<>();
+        for (String str : strings) {
+            stringChains.put(str, new StringChain("", 1));
         }
-        Arrays.sort(words, Comparator.comparingInt(String::length).reversed());
-        for(int i = words.length - 1; i >= 0; i--){
-            String word = words[i];
-            int count = recursiveSearch(set, word, 0);
-            System.out.println(word + " " + count);
+        for (String str : strings) {
+            findLongestStringChain(str, stringChains);
         }
-        for(int i = words.length - 1; i > 0; i--) {
-            String word = words[i];
-            int count = recursiveSearch2(set, word, words[i - 1], 0, new HashMap<>());
-            System.out.println(word + " " + count);
-        }
-
-        System.out.println();
-        //map.forEach((k,v) -> System.out.println(k+" " +v));
-        return maxLength;
+        return buildLongestList(strings, stringChains);
     }
 
-    private int recursiveSearch2(Set<String> set, String word,String child, int count,
-                                                       Map<String, List<String>> map){
-        if(!set.contains(word) || !set.contains(child)){
-            return 0;
+    private static List<String> buildLongestList(List<String> strings, Map<String, StringChain> stringChains) {
+        int maxChainLength = 0;
+        String startingString = "";
+        //System.out.println(stringChains);
+        for (String str : strings) {
+            if (stringChains.get(str).maxChainLength > maxChainLength) {
+                startingString = str;
+                maxChainLength = stringChains.get(str).maxChainLength;
+            }
         }
-
-        if(!map.containsKey(word)){
-            map.put(word, new ArrayList<>());
+        List<String> longestList = new ArrayList<>();
+        String currentString = startingString;
+        while (currentString != "") {
+            longestList.add(currentString);
+            currentString = stringChains.get(currentString).nextChain;
         }
-        map.get(word).add(child);
-        return map.get(word).size();
-
-//        int max =0;
-//        for(int j = 0; j < word.length(); j++){
-//            child = word.substring(0, j) + word.substring(j + 1);
-//            max =Math.max(max,  recursiveSearch2(set, word, child, count, new HashMap<>() ));
-//        }
-//
-//        return max;
+        return longestList;
     }
 
-    private int recursiveSearch(Set<String> set, String word, int count){
-        if(!set.contains(word)){
-            return 0;
+    private static void findLongestStringChain(String str, Map<String, StringChain> stringChains) {
+        for (int i = 0; i < str.length(); i++) {
+            String subString = str.substring(0, i) + str.substring(i + 1);
+            if (stringChains.containsKey(subString))
+                tryUpdateStringChain(str, subString, stringChains);
         }
-        if(wordMap.containsKey(word)){
-            return wordMap.get(word);
-        }
-        if(!wordMap.containsKey(word)){
-            wordMap.put(word, 0);
-        }
-        maxLength = Math.max(maxLength, count + 1);
+    }
 
-        int max =0;
-        for(int j = 0; j < word.length(); j++){
-            String subString = word.substring(0, j) + word.substring(j + 1);
-            max =Math.max(max,  recursiveSearch(set, subString, count ));
+    private static void tryUpdateStringChain(String str, String subString, Map<String, StringChain> stringChains) {
+        int strLength = stringChains.get(str).maxChainLength;
+        int subStringLength = stringChains.get(subString).maxChainLength;
+        if (strLength < subStringLength + 1) {
+            stringChains.get(str).maxChainLength = subStringLength + 1;
+            stringChains.get(str).nextChain = subString;
         }
-        wordMap.put(word, max +1);
-        return wordMap.get(word);
+    }
+}
+
+class StringChain {
+    String nextChain;
+    Integer maxChainLength;
+
+    public StringChain(String nextChain, Integer maxChainLength) {
+        this.nextChain = nextChain;
+        this.maxChainLength = maxChainLength;
+    }
+
+    @Override
+    public String toString() {
+        return "StringChain{" +
+                "nextChain='" + nextChain + '\'' +
+                ", maxChainLength=" + maxChainLength +
+                '}';
     }
 }
