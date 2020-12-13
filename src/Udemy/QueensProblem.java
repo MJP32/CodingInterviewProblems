@@ -6,7 +6,7 @@ public class QueensProblem {
 
 
     public static void main(String[] args) {
-        QueensProblem problem = new QueensProblem(4);
+        QueensProblem problem = new QueensProblem(8);
         problem.solve();
     }
 

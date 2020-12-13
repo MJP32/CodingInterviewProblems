@@ -29,13 +29,15 @@ public class CalendarMatching {
 
 
         List<Meeting> updatedCaleandr1 = updateCalendar(calendar1, dailyBounds1);
+        System.out.println(updatedCaleandr1);
         List<Meeting> updatedCaleandr2 = updateCalendar(calendar2, dailyBounds2);
 
 
 
         List<Meeting> mergedCalendar = mergeCalendars(updatedCaleandr1, updatedCaleandr2);
+        mergedCalendar.forEach(k-> System.out.println(k.toString()));
         List<Meeting> flattencalendr = flattenCalenedars(mergedCalendar);
-        //flattencalendr.forEach(k-> System.out.println(k.toString()));
+//        flattencalendr.forEach(k-> System.out.println(k.toString()));
         System.out.println();
 
         return getMatchingAvailabilities(flattencalendr, meetingDuration);

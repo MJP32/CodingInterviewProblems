@@ -25,14 +25,14 @@ public class BinaryTreeVerticalOrderTraversal {
         */
 
 
-        TreeNode tree = new TreeNode(9);
-        tree.left = new TreeNode(1);
-        tree.right = new TreeNode(8);
-        tree.left.left = new TreeNode(4);
-        tree.left.right = new TreeNode(5);
+        TreeNode tree = new TreeNode(3);
+        tree.left = new TreeNode(9);
+        tree.right = new TreeNode(20);
+//        tree.left.left = new TreeNode(4);
+//        tree.left.right = new TreeNode(5);
 
-        tree.right.left = new TreeNode(3);
-        tree.right.right = new TreeNode(2);
+        tree.right.left = new TreeNode(15);
+        tree.right.right = new TreeNode(7);
 
         BinaryTreeVerticalOrderTraversal lc404 = new BinaryTreeVerticalOrderTraversal();
 

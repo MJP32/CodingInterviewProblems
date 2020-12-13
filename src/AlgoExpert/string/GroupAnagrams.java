@@ -2,7 +2,8 @@ package AlgoExpert.string;
 
 import java.util.*;
 
-public class GroupAnagrams {
+public class
+GroupAnagrams {
     public static void main(String[] args) {
         groupAnagrams2(Arrays.asList(new String[]{"yo", "act","flop", "tac","cat", "oy", "olfp"})).forEach(k-> System.out.println(k));
     }

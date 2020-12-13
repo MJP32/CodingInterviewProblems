@@ -39,10 +39,8 @@ public class Permutations {
         else{
             for(int i =0;i< array.size();i++){
                 List<Integer> newArray = new ArrayList<Integer>(array);
-                System.out.println("removing " + newArray.get(i));
                 newArray.remove(i);
                 List<Integer> newPermutation = new ArrayList<Integer>(currentPermutation);
-                System.out.println("adding" + array.get(i));
                 newPermutation.add(array.get(i));
                 getPermutations(newArray, newPermutation, results);
             }

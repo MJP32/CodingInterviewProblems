@@ -5,7 +5,11 @@ import java.util.Map;
 
 public class SmallestSubstringContaining {
     public static void main(String[] args) {
-        System.out.println(smallestSubstringContaining("abcd$ef$axb$c$", "$$abf"));
+//        System.out.println(smallestSubstringContaining("abcd$ef$axb$c$", "$$abf"));
+
+        String bigString = "abzacdwejxjftghiwjtklmnopqrstuvwxyz";
+        String smallString = "aajjttwwxxzz";
+        System.out.println(smallestSubstringContaining(bigString, smallString));
         //f$axb$
     }
 
@@ -33,6 +37,7 @@ public class SmallestSubstringContaining {
                 if (length < minLength) {
                     minLength = windowEnd - windowStart + 1;
                     smallestString = bigString.substring(windowStart, windowEnd + 1);
+                    System.out.println(smallestString);
                 }
                 char leftChar = bigString.charAt(windowStart++);
                 if (map.containsKey(leftChar)) {

@@ -1,27 +1,72 @@
 package AlgoExpert.linkedlist.LRUCache;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public  class LRUCache {
     int maxSize;
+    int currentSize =0;
+    Map<String, DoublyLinkedListNode> cache = new HashMap<>();
+    DoublyLinkedList listOfMostRecent = new DoublyLinkedList();
+
+    public static void main(String[] args) {
+        LRUCache lru = new LRUCache(3);
+        lru.insertKeyValuePair("b", 2);
+        lru.insertKeyValuePair("a", 1);
+        lru.insertKeyValuePair("c", 3);
+        System.out.println(lru.getMostRecentKey());
+    }
 
     public LRUCache(int maxSize) {
         this.maxSize = maxSize > 1 ? maxSize : 1;
     }
 
-//    public void insertKeyValuePair(String key, int value) {
-//        // Write your code here.
-//    }
-//
-//    public LRUResult getValueFromKey(String key) {
-//        // Write your code here.
-//        return new LRUResult();
-//    }
-//
-//    public String getMostRecentKey() {
-//        // Write your code here.
-//
-//
-//    }
+    public void insertKeyValuePair(String key, int value) {
+        if (!cache.containsKey(key)) {
+            if(currentSize == maxSize){
+                evictLeaseRecent();
+            }
+            else{
+                currentSize++;
+            }
+            cache.put(key, new DoublyLinkedListNode(key, value));
+        }
+        else{
+            replaceKey(key, value);
+        }
+        updateMostRecent(cache.get(key));
+    }
 
+    public LRUResult getValueFromKey(String key) {
+        if(!cache.containsKey(key))
+            return new LRUResult(false,-1);
+        updateMostRecent(cache.get(key));
+        return new LRUResult(true, cache.get(key).value);
+    }
+
+
+    public String getMostRecentKey() {
+        if (listOfMostRecent.head == null) {
+            return  "";
+        }
+        return listOfMostRecent.head.key;
+    }
+
+    public void evictLeaseRecent(){
+        String keyToRemove = listOfMostRecent.tail.key;
+        listOfMostRecent.removeTail();
+        cache.remove(keyToRemove);
+    }
+    public void updateMostRecent(DoublyLinkedListNode node){
+        listOfMostRecent.setHeadTo(node);
+    }
+
+    public void replaceKey(String key, int value){
+        if(!this.cache.containsKey(key)){
+            return;
+        }
+        cache.get(key).value = value;
+    }
     static class DoublyLinkedList{
         DoublyLinkedListNode head = null;
         DoublyLinkedListNode tail = null;

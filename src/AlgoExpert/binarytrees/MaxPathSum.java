@@ -36,7 +36,7 @@ class MaxPathSum {
         return max;
     }
     public static  int maxPathSumHelper(BinaryTree tree, int max){
-        if(tree == null){
+        if(tree == null|| tree.left == null||tree.right==null){
             return max;
         }
         return maxPathSumHelper(tree.left , max + tree.left.value) + maxPathSumHelper(tree.right, max + tree

@@ -12,7 +12,7 @@ public class LC127_WordLadder {
         list.add("dog");
         list.add("lot");
         list.add("log");
-        //list.add("cog");
+        list.add("cog");
         System.out.println(new LC127_WordLadder().ladderLength("hit","cog" ,list));
     }
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {

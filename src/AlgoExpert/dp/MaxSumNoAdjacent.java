@@ -1,6 +1,6 @@
 package AlgoExpert.dp;
 
-public class MaxSumAdjacent {
+public class MaxSumNoAdjacent {
     public static void main(String[] args) {
         System.out.println(maxSubsetSumNoAdjacent(new int[]{75,105,120,75,90,135}));
     }

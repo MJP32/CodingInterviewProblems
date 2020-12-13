@@ -5,6 +5,7 @@ import java.util.*;
 public class TopologicalSort {
     public static void main(String[] args) {
         /*
+            Given a list of jobs and dependencies
 
             jobs[1,2,3,4]
             deps[[1,2],[1,3],[3,2],[4,2], [4,3]]
@@ -20,6 +21,8 @@ public class TopologicalSort {
             2 []
             3 [2]
             4 [2, 3]
+
+            1
          */
     }
 
